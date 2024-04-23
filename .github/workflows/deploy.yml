@@ -69,7 +69,7 @@ jobs:
       - name: Build, and Push Docker Image
         env:
           REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-          REPOSITORY: DevOps-AWS
+          REPOSITORY: devops-aws
           IMAGE_TAG: ${{ github.sha }}
         run: |- 
           docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG .
