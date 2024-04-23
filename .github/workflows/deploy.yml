@@ -26,14 +26,14 @@ jobs:
 
       - name: Terraform Init
         id: init
-        run: terraform init -backend-config="bucket=${{ env.TF_STATE_BUCKET_NAME }}" -backend-config="region=us-east-1"
+        run: terraform init -backend-config="bucket=${{ env.TF_STATE_BUCKET_NAME }}" -backend-config="region=us-east-2"
         working-directory: ./terraform
 
       - name: Terraform Plan
         id: plan
         run: |-
           terraform plan \
-          -var="regiong=us-east-1" \
+          -var="regiong=us-east-2" \
           -var="public_key=$PUBLIC_SSH_KEY" \
           -var="private_key=$PRIVATE_SSH_KEY" \
           -var="key_name=deployer-key" \
