@@ -31,7 +31,7 @@ jobs:
         run: terraform init -backend-config="bucket=$TF_STATE_BUCKET_NAME" -backend-config="region=us-east-1"
         working-directory: ./terraform
 
-        
+
       - name: Terraform Plan
         id: plan
         run: |-
@@ -63,9 +63,6 @@ jobs:
 
       - name: Set IP env variable
         run: echo SERVER_PUBLIC_IP=${{ needs.deploy-infra.outputs.SERVER_PUBLIC_IP }} >> $GITHUB_ENV
-  
-      - name: Debug Server IP
-        run: echo "Server IP: ${{ steps.deploy-infra.outputs.SERVER_PUBLIC_IP }}"
 
       - name: Login to AWS ECR
         id: login-ecr
@@ -80,6 +77,9 @@ jobs:
           docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG .
           docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG 
         working-directory: ./nodeapp
+
+      - name: Debug Server
+        run: echo "${{ steps.deploy-infra.outputs.SERVER_PUBLIC_IP }}"
   
       - name: Deploy Docker Image to EC2
         env: 
