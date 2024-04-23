@@ -3,7 +3,7 @@ const app = express();
 
 // What you can get a response on main index route
 app.get('/', (req, res) => {
-  res.send('Service is up and running.');
+  res.send('Service iss up and running.');
 });
 
 app.listen(8080, () => {
