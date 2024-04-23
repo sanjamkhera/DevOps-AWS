@@ -13,7 +13,7 @@ provider "aws" {
   region = var.region
 }
 resource "aws_instance" "servernode" {
-  ami                    = "ami-052efd3df9dad4825"
+  ami                    = "ami-080e1f13689e07408"
   instance_type          = "t2.micro"
   key_name               = aws_key_pair.deployer.key_name
   vpc_security_group_ids = [aws_security_group.maingroup.id]
@@ -29,10 +29,12 @@ resource "aws_instance" "servernode" {
     "name" = "DeployVM"
   }
 }
+
 resource "aws_iam_instance_profile" "ec2-profile" {
   name = "ec2-profile"
-  role = "ECR-ECR-AUTH"
+  role = "EC2-ECR-AUTH"
 }
+
 resource "aws_security_group" "maingroup" {
   egress = [
     {
