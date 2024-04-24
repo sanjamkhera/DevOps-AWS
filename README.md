@@ -6,4 +6,4 @@
 - AWS configuration includes action secrets, S3 bucket creation.
 - GitHub Actions workflow for CI/CD pipeline setup.
 - EC2 instance deployment with Docker image.
-- Conclusion: Demonstrates CI/CD pipeline using GitHub Actions, Terraform, and AWS.
+- Demonstrates CI/CD pipeline using GitHub Actions, Terraform, and AWS.
